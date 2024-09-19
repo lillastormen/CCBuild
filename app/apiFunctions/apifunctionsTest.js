@@ -1,5 +1,4 @@
-import { supabase } from './dbConnectionTest.js';
-
+import { supabase } from './dbConnection.js';
 
 export async function Users() {
 const { data, error } = await supabase
@@ -8,5 +7,3 @@ const { data, error } = await supabase
 
     console.log(data, error);
 }
-
-

@@ -5,11 +5,14 @@ import { UserController } from './apiFunctions/userController.js';
 import { ProjectController } from './apiFunctions/projectController.js';
 import { ProductController } from './apiFunctions/productController.js';
 
-let data = await UserController.test();		// Demo
-console.log('bob', data);
 
-export default function Home() {
 
+export default async function Home() {
+	(async () =>{
+		let data = await UserController.test();		// Demo
+		console.log('bob', data);
+	})();
+	
 	Users();
 
 

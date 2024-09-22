@@ -1,4 +1,4 @@
-import { supabase } from './dbConnection.js';
+import { supabase } from '../db/dbConnection.js';
 
 export async function Users() {
 const { data, error } = await supabase

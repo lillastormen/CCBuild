@@ -18,14 +18,3 @@ export default async function Home() {
 
 }
 	
-// }
-
-// const CreateProductPage = () => {
-//   return (
-//     <div>
-//       <h1>Add New Product</h1>
-//       <ProductForm />
-//     </div>
-//   );
-// };
-// export default CreateProductPage;

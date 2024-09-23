@@ -20,13 +20,13 @@ const ProductForm = () => {
         thickness: null,
         manufacturer: '',
         yearOfManufacture: '',
-        articleNumber: '',
+        articleNumber: null,
         yearOfPurchase: '',
-        GTIN: '',
-        RSK: '',
-        ENR: '',
-        BSAB: '',
-        BK04: ''
+        GTIN: null,
+        ENR: null,
+        RSK: null,
+        BSAB: null,
+        BK04: null
     });
 
     const handleChange = (e) => {
@@ -91,6 +91,83 @@ const ProductForm = () => {
                     onChange={handleChange}
                 />
             </div>
+            <div>
+                <label>Article number:</label>
+                <input
+                    type="number"
+                    name="articleNumber"
+                    value={product.articleNumber}
+                    onChange={handleChange}
+                />
+            </div>
+            <div>
+                <label>Year of manufacture:</label>
+                <input
+                    type="date"
+                    name="yearOfManufacture"
+                    value={product.yearOfManufacture}
+                    onChange={handleChange}
+                />
+            </div>
+            <div>
+        <label>Year of Purchase:</label>
+        <input
+          type="date"
+          name="yearOfPurchase"
+          value={product.yearOfPurchase}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div>
+        <label>GTIN:</label>
+        <input
+          type="number"
+          name="GTIN"
+          value={product.GTIN || ''}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label>RSK:</label>
+        <input
+          type="number"
+          name="RSK"
+          value={product.RSK || ''}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label>ENR:</label>
+        <input
+          type="number"
+          name="ENR"
+          value={product.ENR || ''}
+          onChange={handleChange}
+        />
+      </div>
+
+  
+
+      <div>
+        <label>BSAB:</label>
+        <input
+          type="number"
+          name="BSAB"
+          value={product.BSAB || ''}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div>
+        <label>BK04:</label>
+        <input
+          type="number"
+          name="BK04"
+          value={product.BK04 || ''}
+          onChange={handleChange}
+        />
+      </div>
             <div>
                 <label>Description:</label>
                 <textarea

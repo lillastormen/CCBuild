@@ -24,6 +24,7 @@ const CreateProductPage = () => {
     const query = await ProductController.readOne(productId);
     setLoading(false);
     setProduct(query.data);
+    console.log(query);
   }
 
   //using useEffect to make sure that we only call the db if the id changes

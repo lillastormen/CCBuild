@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { ProductController } from "@/app/controllers/productController";
-import { ProductObject } from "../objects/product"
+import { ProductController } from "@/controllers/productController";
+import { ProductObject } from "../objects/ProductObject"
 
 function ProductForm() {
 

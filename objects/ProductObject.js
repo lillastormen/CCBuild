@@ -1,11 +1,11 @@
 
 export const ProductObject = {
         name: '',
-        projectId: 1,
+        projectId: null,
         conditionVisual: true,
         conditionFunctional: true,
         picture: '',
-        projectNumber: 5,
+        projectNumber: null,
         description: '',
         material: '',
         'color/finish': '',

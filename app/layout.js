@@ -1,12 +1,8 @@
-import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import  { Inter } from 'next/font/google'
 
-const inter = Inter({
-  subsets: ['latin']
-});
+
 
 
 export const metadata = {
@@ -16,8 +12,14 @@ export const metadata = {
 
 export default function Layout({ children }) {
   return (
-    <html lang="en" className={inter.className}>
-      <body className={inter.className}>
+    <html lang="en">
+      <head>
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="font-inter">
         <Header />
          {children}
         <Footer /> 

@@ -5,6 +5,19 @@ export const ProjectController = {
         
     },
 
+    add: async (project) =>{
+        let data = {};
+
+        for (const entry of project.entries())
+            data[entry[0]] = entry[1];
+
+        let res = await supabase
+            .from('Project')
+            .insert(data);
+
+        return res;
+    },
+
     read: async () =>{
 
     },

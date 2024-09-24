@@ -31,39 +31,61 @@ export const ProductController = {
 
 
 	add: async (product) =>{
-		console.log(product)
-
-		let data = {testbox: false};
+		let data = {};
+		let marketData = {allowBuyerToProposePrice: false, canBePickedUpOnSite: false, canBeDelivered: false};
+		let inventoryData = {};
+		let propData = [];
 
 		for (const entry of product.entries()){
-			console.log(entry)
-			if (['testbox'].includes(entry[0]))
-				data.testbox = true;
-			else
-				data[entry[0]] = entry[1];
+			if (entry[0][0] == '0') propData.push({propertyId: +[entry[0]], value: entry[1]});
+			else if (entry[0][0] == '1'){
+				if (['1allowBuyerToProposePrice', '1canBePickedUpOnSite', '1canBeDelivered'].includes(entry[0])) marketData[entry[0].substring(1)] = true;
+				else marketData[entry[0].substring(1)] = entry[1];
+			}
+			else if (entry[0][0] == '2') inventoryData[entry[0].substring(1)] = entry[1];
+			else data[entry[0]] = entry[1];
 		}
-		console.log(data)
-		return;		// Prevent add to db
 
 		let res = await supabase
 			.from('Product')
-			.insert(data);
+			.insert(data)
+			.select();
+
+		if (res.error) return res;
+
+		propData.forEach((e) =>{
+			e.productId = res.data[0].id;
+		});
+
+		marketData.productId = res.data[0].id;
+		inventoryData.productId = res.data[0].id;
+
+		supabase
+			.from('Product_properties')
+			.insert(propData);
+
+		supabase
+			.from('Product_marketplace')
+			.insert(marketData);
+
+		supabase
+			.from('Product_inventory')
+			.insert(inventoryData);
 
 		return res;
-
-		// name, projectId, conditionVisual, conditionFunctional, picture, projectNumber, description, material, color, measurementsUnit, width, height, depth, diameter, thickness, manufacturer, yearOfManufacture, articleNumber, yearOfPurchase, GTIN, RSK, ENR, BSAB, BK04
 	},
 
-	getAll: async () =>{
+	getAll: async (projectId) =>{
 		let res = await supabase
-			.from('Project')
-			.select('*');
+			.from('Product')
+			.select('*')
+			.eq('projectId', projectId);
 		return res;
 	},
 
 	get: async (id) =>{
 		let res = await supabase
-			.from('Project')
+			.from('Product')
 			.select('*')
 			.eq('id', id);
 		return res;

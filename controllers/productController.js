@@ -105,6 +105,13 @@ export const ProductController = {
 		return res;
 	},
 
+	getCategories: async () =>{
+		let res = await supabase
+			.from('Category')
+			.select('*');
+		return res;
+	},
+
 	update: async () =>{
 
 	},

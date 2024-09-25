@@ -18,8 +18,19 @@ export const ProjectController = {
         return res;
     },
 
-    read: async () =>{
+    getAll: async () =>{
+        let res = await supabase
+            .from('Project')
+            .select('*');
+        return res;
+    },
 
+    get: async (id) =>{
+        let res = await supabase
+            .from('Project')
+            .select('*')
+            .eq('id', id);
+        return res;
     },
 
     update: async () =>{

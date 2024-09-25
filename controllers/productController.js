@@ -46,6 +46,13 @@ export const ProductController = {
 			else data[entry[0]] = entry[1];
 		}
 
+		console.log('data', data)
+		console.log('prop', propData)
+		console.log('mark', marketData)
+		console.log('inve', inventoryData)
+
+		return;
+
 		let res = await supabase
 			.from('Product')
 			.insert(data)
@@ -75,7 +82,14 @@ export const ProductController = {
 		return res;
 	},
 
-	getAll: async (projectId) =>{
+	getAll: async () =>{
+		let res = await supabase
+			.from('Product')
+			.select('*');
+		return res;
+	},
+
+	getAllFrom: async (projectId) =>{
 		let res = await supabase
 			.from('Product')
 			.select('*')

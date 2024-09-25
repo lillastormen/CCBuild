@@ -19,7 +19,7 @@ export default function Layout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="font-inter">
+      <body className="font-inter flex flex-col">
         <Header />
          {children}
         <Footer /> 

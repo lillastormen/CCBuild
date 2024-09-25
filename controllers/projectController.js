@@ -29,7 +29,8 @@ export const ProjectController = {
         let res = await supabase
             .from('Project')
             .select('*')
-            .eq('id', id);
+            .eq('id', id)
+            .maybeSingle();
         return res;
     },
 

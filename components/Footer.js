@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export default function Footer() {
     return (
-        <div className="absolute bottom-0 text-white flex flex-col justify-between items-center bg-zodiac w-full mt-16 pb-16">
+        <div className="text-white flex flex-col justify-between items-center bg-zodiac w-full mt-16 pb-16">
             <div>
                 <h2 className="font-poppins font-medium text-2xl mt-16 my-4">CCBuild.se - Produktbanken</h2>
             </div>

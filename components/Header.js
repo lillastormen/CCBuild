@@ -13,7 +13,7 @@ export default function Header() {
                         alt='CCBuild logo'
                     />
                 </div> 
-                <ul className="flex gap-10 text-xs items-center">
+                <ul className="flex gap-8 text-xs items-center">
                     <li>
                         <h2>CCBUILD</h2>
                     </li>
@@ -72,13 +72,13 @@ export default function Header() {
                     </li>
                 </ul>
             </div>
-            <div className="flex flex-row justify-between items-center bg-zodiac w-full px-4 py-6 my-3">
+            <div className="flex flex-row justify-between items-center bg-zodiac w-full px-4 py-4 my-3">
                 <ul className="flex gap-10 text-white text-xs">
                     <li>
                         <h2>ÖVERSIKT</h2>
                     </li>
                     <li>
-                        <h2>PROJEKT</h2>
+                        <h2 className="underline decoration-solid">PROJEKT</h2>
                     </li>
                     <li>
                         <h2>PRODUKTER</h2>

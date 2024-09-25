@@ -8,7 +8,7 @@ export const ProductObject = {
         projectNumber: null,
         description: '',
         material: '',
-        'color/finish': '',
+        'color': '',
         measurementsUnit: 'mm',
         width: null,
         height: null,

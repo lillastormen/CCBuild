@@ -15,10 +15,17 @@ module.exports = {
         'zodiac': '#112F5F',
         'seashell': '#F1F1F1',
         'lightblue': '#F5F9FC',
+        'bostonblue': "##488AC6",
         'geyser': '#DEE2E6',
         'codgray': '#151515',
-        'bostonblue': '##488AC6'
-      }
+        'bostonblue': '#488AC6',
+        'athensgrey': "#F8F9FA",
+        'loblolly': "#BDC5CD"
+      },
+      textUnderlineOffset: {
+        4: '4px', 
+        6: '6px'
+      },
     },
   },
   plugins: [],

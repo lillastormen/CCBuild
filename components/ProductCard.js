@@ -21,7 +21,7 @@ export default function ProductCard( { product }) {
                 Category
             </div>
             <div>
-                <h4 className="font-bold pt-6">Product name</h4>
+                <h4 className="font-bold pt-6">{product.name}</h4>
                 <div className="flex flex-row justify-between gap-6">
                     <div className="text-sm flex flex-col gap-2">
                         <p>CCBuild Nr.</p>

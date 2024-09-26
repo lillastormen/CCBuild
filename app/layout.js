@@ -1,8 +1,7 @@
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
-
+import { Suspense } from 'react'
 
 
 export const metadata = {
@@ -21,7 +20,9 @@ export default function Layout({ children }) {
       </head>
       <body className="font-inter flex flex-col min-h-screen ">
         <Header />
-        <div className="grow">{children}</div>
+        <Suspense>
+          <div className="grow">{children}</div>
+        </Suspense>
         <Footer /> 
       </body>
     </html>

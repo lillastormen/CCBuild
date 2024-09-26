@@ -274,18 +274,18 @@ export default function HomePage() {
 					{
 						searchCategory ? (
 							<div>
-								<span onClick={() => handleSelectCategory(null)}>{'<-'}</span>
+								<span onClick={() => handleSelectCategory(null)} className="cursor-pointer">{'<-'}</span>
 								<span className="border border-seashell bg-seashell rounded-full font-bold text-xs px-4 py-2">{searchCategory.name}</span>
 								<div>{
 									searchCategory.children.map((cat) =>(
-										<span key={cat.id} onClick={() => handleSelectCategory(cat)} className="border border-seashell bg-seashell rounded-full font-bold text-xs px-4 py-2">{cat.name}</span>
+										<span key={cat.id} onClick={() => handleSelectCategory(cat)} className="border border-seashell bg-seashell rounded-full font-bold text-xs px-4 py-2 cursor-pointer">{cat.name}</span>
 									))
 								}</div>
 							</div>
 						) : (
 							<div>{
 								categories.map((cat) =>(
-									<span key={cat.id} onClick={() => handleSelectCategory(cat)} className="border border-seashell bg-seashell rounded-full font-bold text-xs px-4 py-2">{cat.name}</span>
+									<span key={cat.id} onClick={() => handleSelectCategory(cat)} className="border border-seashell bg-seashell rounded-full font-bold text-xs px-4 py-2 cursor-pointer">{cat.name}</span>
 								))
 							}</div>
 						)

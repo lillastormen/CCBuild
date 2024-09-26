@@ -258,31 +258,14 @@ export default function HomePage() {
 					</div>
 					<div>
 						<h4 className="pb-3">Produktinformation</h4>
-						<Image 
-							src="/images/scale.png"
-							width={360}
-							height={83}
-							alr="scale_placeholder"
-						/>
+						<RangeSlider min={1} max={5} defaultValue={[1, 5]} onInput={(val) => handleSelectVisualRating(val)}/>
 					</div>
 					<div className="pt-2">
 						<h4 className="pb-3">Estetiskt skick</h4>
-						<Image 
-							src="/images/scale.png"
-							width={360}
-							height={83}
-							alr="scale_placeholder"
-						/>
 						<RangeSlider min={1} max={5} defaultValue={[1, 5]} onInput={(val) => handleSelectVisualRating(val)}/>
 					</div>
 					<div className="pt-2">
 						<h4 className="pb-3">Funktionellt skick</h4>
-						<Image 
-							src="/images/scale.png"
-							width={360}
-							height={83}
-							alr="scale_placeholder"
-						/>
 						<RangeSlider min={1} max={5} defaultValue={[1, 5]} onInput={(val) => handleSelectFunctionalRating(val)}/>
 					</div>
 				</div>

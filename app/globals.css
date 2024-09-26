@@ -21,3 +21,18 @@ body {
 }
 
 
+label {
+  color: #151515;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 21px; /* 131.25% */
+display: block
+}
+
+input {
+  border-radius: 2px;
+border: 1px solid var(--ccbuild-se-mercury, #E4E2E2);
+background: var(--ccbuild-se-alabaster, #F9F9F9);
+}

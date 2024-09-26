@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { ProductController } from "@/controllers/productController";
 import { ProductObject } from "../objects/ProductObject"
 
-function ProductForm({ step, currentProduct }) {
+function ProductForm({ step, currentProduct, currentInventory }) {
 
     const [product, setProduct] = useState(currentProduct);
+    const [inventory, setInventory] = useState(currentInventory);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -15,6 +16,19 @@ function ProductForm({ step, currentProduct }) {
             ...product, 
             [name]: isNumericField ? (value === '' ? null : parseInt(value, 10)) : 
             isBooleanField ? (value === 'true' ? true : false) : value
+        });
+    };    
+    
+    const handleInventoryChange = (e) => {
+        const { name, value } = e.target;
+        // const isNumericField = ['projectId', 'projectNumber', 'width', 'height', 'depth', 'diameter', 'thickness'].includes(name);
+        // const isBooleanField = ['conditionVisual', 'conditionFunctional'].includes(name);
+        
+        setInventory({
+            ...inventory, 
+            [name]: value
+            // [name]: isNumericField ? (value === '' ? null : parseInt(value, 10)) : 
+            // isBooleanField ? (value === 'true' ? true : false) : value
         });
     };
 
@@ -37,10 +51,10 @@ function ProductForm({ step, currentProduct }) {
         console.error('Error creating product:', response.error);
         }
     };
-
+console.log(inventory)
     return (
         
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="">
         {(step == 0) && (
        
         <>
@@ -117,8 +131,8 @@ function ProductForm({ step, currentProduct }) {
                     <input
                         type="text"
                         name="conditionVisual"
-                        value={product.conditionVisual}
-                        onChange={handleChange}
+                        value={inventory.conditionVisual}
+                        onChange={handleInventoryChange}
                         required
                     />
                 </div>
@@ -127,8 +141,8 @@ function ProductForm({ step, currentProduct }) {
                     <input
                         type="text"
                         name="conditionFunctional"
-                        value={product.conditionFunctional}
-                        onChange={handleChange}
+                        value={inventory.conditionFunctional}
+                        onChange={handleInventoryChange}
                         required
                     />
                 </div>
@@ -172,18 +186,8 @@ function ProductForm({ step, currentProduct }) {
                     />
                 </div>
                 <div>
-                    <h3>Vikt</h3>
-                    <p>Enhet - kg</p>
-                    <p>Vikt / st</p>
-                    <input
-                        type="text"
-                        name="weight"
-                     
-                    />
-                </div>
-                <div>
-                    <h3>Mått</h3>
-                    <p>Enhet - {product.measurementsUnit}</p>
+                    <h3 className="pt-4">Mått</h3>
+                    <p className="text-xs pb-2">Enhet - {product.measurementsUnit}</p>
                 </div>
                 <div>
                     <div>
@@ -399,7 +403,7 @@ function ProductForm({ step, currentProduct }) {
                 
              
            
-                <button type="submit">Submit</button>
+                {/* <button type="submit">Submit</button> */}
          
         </form>
     );

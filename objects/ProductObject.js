@@ -2,8 +2,6 @@
 export const ProductObject = {
         name: '',
         projectId: null,
-        conditionVisual: null,
-        conditionFunctional: null,
         picture: '',
         projectNumber: null,
         description: '',
@@ -24,6 +22,8 @@ export const ProductObject = {
         ENR: null,
         RSK: null,
         BSAB: null,
-        BK04: null
+        BK04: null,
+        conditionFunctional: null,
+        conditionVisual: null
 };
 

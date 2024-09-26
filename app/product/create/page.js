@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation'
 import { ProductObject } from "@/objects/ProductObject";
 
 import { ProductController } from "@/controllers/productController";
+import { ProductInventory } from "@/objects/ProductInventory";
 
 
 const CreateProductPage = () => {
@@ -18,6 +19,9 @@ const CreateProductPage = () => {
   //using setState to store dynamic info from the db and also controlling what we should show, if it's loading or not
   const [product, setProduct] = useState(ProductObject);
   const [loading, setLoading] = useState(true);
+  
+  const [inventory, setInventory] = useState(ProductInventory);
+  const [loadingInventory, setLoadingInventory] = useState(true);
   //setting a step to 0
   const [step, setStep] = useState(0);
 
@@ -109,15 +113,16 @@ const CreateProductPage = () => {
                 <ProductForm 
                   step={step}
                   currentProduct={product}
+                  currentInventory={inventory}
                 />
               </>
             )}
           </div>
           <div className="flex flex-row justify-between pt-8">
-            <button className="flex flex-row gap-2 items-center font-semibold bg-white border border-bostonblue rounded-full px-4 py-2 text-bostonblue text-sm">Föregående</button>
+            <button className="flex flex-row gap-2 items-center font-semibold bg-white border border-bostonblue rounded-full px-4 py-2 text-bostonblue text-sm" onClick={() => setStep(step-1)}>Föregående</button>
             <div className="flex flex-row gap-3">
               <button className="flex flex-row gap-2 items-center font-semibold bg-white border border-bostonblue rounded-full px-4 py-2 text-bostonblue text-sm">Spara</button>
-              <button className="flex flex-row gap-2 items-center font-semibold bg-bostonblue border rounded-full px-4 py-2 text-white text-sm">Nästa</button>
+              <button className="flex flex-row gap-2 items-center font-semibold bg-bostonblue border rounded-full px-4 py-2 text-white text-sm" onClick={() => setStep(step+1)}>Nästa</button>
             </div>
           </div>
         </div>

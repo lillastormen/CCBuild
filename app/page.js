@@ -258,7 +258,7 @@ export default function HomePage() {
 					</div>
 					<div>
 						<h4 className="pb-3">Produktinformation</h4>
-						<RangeSlider min={1} max={5} defaultValue={[1, 5]} onInput={(val) => handleSelectVisualRating(val)}/>
+						<RangeSlider min={1} max={5} defaultValue={[1, 5]} onInput={(val) => console.log('Nop :p')}/>
 					</div>
 					<div className="pt-2">
 						<h4 className="pb-3">Estetiskt skick</h4>

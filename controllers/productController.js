@@ -112,6 +112,20 @@ export const ProductController = {
 		return res;
 	},
 
+	// sql black magic
+	getCategoryById: async (id) => { 
+		
+		console.log(id, 'dsfdsf')
+		const { data, error } = await supabase.rpc('getcategorybyid', {cid : id} );
+		if (error) {
+			console.error('Error fetching post and its parents:', error);
+			return null;
+		  }
+		
+		  return data;
+		
+	},
+
 	update: async () =>{
 
 	},

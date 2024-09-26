@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { ProductController } from "@/controllers/productController";
 import { ProductObject } from "../objects/ProductObject"
 
-function ProductForm() {
+function ProductForm({ step, currentProduct }) {
 
-    const [product, setProduct] = useState(ProductObject);
+    const [product, setProduct] = useState(currentProduct);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -36,12 +36,73 @@ function ProductForm() {
         } else {
         console.error('Error creating product:', response.error);
         }
-};
+    };
 
     return (
+        
+        <form onSubmit={handleSubmit}>
+        {(step == 0) && (
+       
         <>
-            <h1>Add New Product</h1>
-            <form onSubmit={handleSubmit}>
+            <div>
+                <label>Projekt*</label>
+                <input
+                    type="number"
+                    name="projectNumber"
+                    value={product.projectNumber}
+                    onChange={handleChange}
+                />
+            </div>
+            <div>
+                <label>Produktkategori*</label>
+                <input
+                    type="number"
+                    name="category"
+                    value={product.projectNumber}
+                    onChange={handleChange}
+                />
+            </div>
+            <div>
+                <label>Produktnamn*</label>
+                <input
+                    type="text"
+                    name="name"
+                    value={product.name}
+                    onChange={handleChange}
+                    required
+                />
+            </div>
+            <div>
+                <label>Produktbilder</label>
+                <input
+                    type="text"
+                    name="picture"
+                    value={product.projectNumber}
+                    onChange={handleChange}
+                />
+            </div>
+            <div>
+                <label>Eget ID-nummer</label>
+                <input
+                    type="number"
+                    name="articleNumber"
+                    value={product.articleNumber}
+                    onChange={handleChange}
+                />
+            </div>
+            <div>
+                <label>Description:</label>
+                <textarea
+                    name="description"
+                    value={product.description}
+                    onChange={handleChange}
+                />
+            </div>
+        </>
+        )}
+        
+        {(step == 1) && (
+                <>
                 <div>
                     <label>Product Name:</label>
                     <input
@@ -52,6 +113,9 @@ function ProductForm() {
                         required
                     />
                 </div>
+
+                </>
+        )}
                 <div>
                     <label>Project id:</label>
                     <input
@@ -61,15 +125,7 @@ function ProductForm() {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <label>Project number:</label>
-                    <input
-                        type="number"
-                        name="projectNumber"
-                        value={product.projectNumber}
-                        onChange={handleChange}
-                    />
-                </div>
+              
                 <div>
                     <label>Article number:</label>
                     <input
@@ -79,6 +135,7 @@ function ProductForm() {
                         onChange={handleChange}
                     />
                 </div>
+           
                 <div>
                     <label>Year of manufacture:</label>
                     <input
@@ -142,14 +199,7 @@ function ProductForm() {
                     onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <label>Description:</label>
-                    <textarea
-                        name="description"
-                        value={product.description}
-                        onChange={handleChange}
-                    />
-                </div>
+             
                 <div>
                     <label>Width (mm):</label>
                     <input
@@ -196,8 +246,8 @@ function ProductForm() {
                     />
                 </div>
                 <button type="submit">Submit</button>
-            </form>
-        </>
+         
+        </form>
     );
 }
 

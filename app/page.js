@@ -1,12 +1,12 @@
 'use client'
-import Image from "next/image";
 
-import { Users } from "../controllers/apifunctionsTest";
-import { UserController } from '../controllers/userController.js';
+import Image from "next/image";
+import Link from "next/link";
 import { ProjectController } from '../controllers/projectController.js';
 import { ProductController } from '../controllers/productController.js';
 import React, { useEffect, useState }from "react";
 import ProductCard from "@/components/ProductCard";
+
 
 
 export default function HomePage() {
@@ -70,7 +70,7 @@ export default function HomePage() {
 			<div>
 				<div className="bg-zodiac h-[22rem] flex flex-col justify-end rounded mx-4 my-6 relative">
 					<div>
-						<button className="absolute top-8 right-28 flex flex-row items-center gap-2 text-xs text-white font-bold border border-white rounded-full px-5 py-3">
+						<button className="absolute top-8 right-14 flex flex-row items-center gap-2 text-xs text-white font-bold border border-white rounded-full px-5 py-3">
 							<Image 
 								src='/icons/image.svg'
 								width={16}
@@ -83,22 +83,25 @@ export default function HomePage() {
 					<div className="flex justify-between w-full items-end">
 						<div className="flex flex-col text-white ml-7 pb-6">
 							<h1 className="font-poppins text-5xl pb-2">Grupp 5</h1>
-							<h3 className="font-poppins text-lg">Yrgo</h3>
+							<h3 className="font-poppins text-lg">Utbildningskonto - Yrgo</h3>
 						</div>
-						<ul className="flex space-x-4 text-xs text-white font-bold mr-28 pb-6">
+						<ul className="flex space-x-4 text-xs text-white font-bold mr-14 pb-6">
 							<li>
-								<button className="flex flex-row gap-3 items-center border border-white rounded-full px-5 py-3 hover:bg-white hover:text-bostonblue hover:border-bostonblue transition-colors duration-300">
-								<svg 
-									xmlns="http://www.w3.org/2000/svg" 
-									width="16" 
-									height="16" 
-									fill="currentColor"  // Allows the color to be controlled by the text color
-									viewBox="0 0 16 16"
-									className="hover:text-[bostonblue]">
-									<path d="M8 4a.5.5 0 0 1 .5.5V7h2.5a.5.5 0 0 1 0 1H8.5v2.5a.5.5 0 0 1-1 0V8H5a.5.5 0 0 1 0-1h2.5V4.5A.5.5 0 0 1 8 4z"/>
-								</svg>
+							<Link 
+								href="/product/create"
+								className="flex flex-row gap-3 items-center border border-white rounded-full px-5 py-3 hover:bg-white hover:text-bostonblue hover:border-bostonblue transition-colors duration-300">
+									<svg 
+										xmlns="http://www.w3.org/2000/svg" 
+										width="16" 
+										height="16" 
+										fill="currentColor"  // Allows the color to be controlled by the text color
+										viewBox="0 0 16 16"
+										className="hover:text-[bostonblue]">
+										<path d="M8 4a.5.5 0 0 1 .5.5V7h2.5a.5.5 0 0 1 0 1H8.5v2.5a.5.5 0 0 1-1 0V8H5a.5.5 0 0 1 0-1h2.5V4.5A.5.5 0 0 1 8 4z"/>
+									</svg>
 									LÄGG TILL PRODUKT
-								</button>
+								
+								</Link>
 							</li>
 							<li>
 								<button className="border border-white rounded-full px-5 py-3">
@@ -123,7 +126,7 @@ export default function HomePage() {
 							</li>
 							<li>
 								<button className="flex flex-row gap-3 items-center border border-white rounded-full px-5 py-3">
-									LÄGG TILL PRODUKT
+									PROJEKT AKTIVT
 									<Image 
 										src='/icons/arrow_white.svg'
 										width={16}
@@ -148,7 +151,10 @@ export default function HomePage() {
 			<div className="flex mx-4">
 				<div className="w-1/4 flex flex-col gap-3 mr-4 pt-6">
 					<h3 className="text-codgrey text-xl">Filter</h3>
-					<div className="bg-lightblue w-full h-[52px]"></div>
+					<div className="bg-lightblue w-full h-[52px] text-xs flex flex-col justify-center items-start pl-4">
+						<p>Produktkort: </p>
+						<p>Klimatbesparing:</p>
+					</div>
 					<div className="pb-4 pt-4">
 						<h4 className="pb-3">Fritext</h4>
 						<div className="border w-full h-[32px] text-geyser flex items-center pl-1">Produktnamn, mm...</div>
@@ -210,14 +216,37 @@ export default function HomePage() {
 					</div>
 				</div>
 				<div className="flex-grow flex flex-col border-l pl-4 pt-4">
-					<div className="flex flex-row gap-3">
-						<p>tag</p>
-						<p>tag</p>
-						<p>tag</p>
+					<div className="flex flex-row gap-3 pb-8 pt-2">
+						<button className="border border-seashell bg-seashell rounded-full font-bold text-xs px-4 py-2">TAG</button>
+						<button className="border border-seashell bg-seashell rounded-full font-bold text-xs px-4 py-2">TAG</button>
+						<button className="border border-seashell bg-seashell rounded-full font-bold text-xs px-4 py-2">TAG</button>
 					</div>
-					<div className="bg-athensgrey w-full h-16">
-					
+					<div className="bg-athensgrey flex items-center w-full h-20">
+						<div className="flex flex-row items-center ml-auto mr-3">
+							<div className="flex items-center justify-center">
+								<Image 
+									src="icons/menu.svg"
+									width={20}
+									height={20}
+									alt="menu"
+									className="transform scale-150"
+								/>
+							</div>
+							<div className="border bg-black flex items-center justify-center h-10 w-10 ml-2">
+								<Image 
+									src="icons/view.svg"
+									width={20}
+									height={20}
+									alt="view"
+									className="transform scale-150"
+								/>
+							</div>
+						<div className="flex flex-row items-center border bg-white ml-2 p-1 text-abbey h-10">
+							<p className="border-r pr-10 ml-2">12</p>
+							<p className="ml-3 mr-24">Uppdaterad</p>
+						</div>
 					</div>
+				</div>
 					<div className="grid grid-cols-3 gap-4 pt-4">
 						{
 							loadingProducts && 

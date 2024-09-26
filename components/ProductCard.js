@@ -1,10 +1,28 @@
 import Image from "next/image"
-import React from "react"
+import React, { useEffect, useState } from "react"
+import { ProductController } from '../controllers/productController.js';
 
 
 export default function ProductCard( { product }) {
     
-    console.log(product);
+    
+	const [categories, setCategories] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    //fetching the product from the db and setting it into the setProduct state
+    async function getCategories() {
+        const categoryQuery = await ProductController.getCategoryById(product.categoryId); //hardcoding the id for now
+        setLoading(false);
+        setCategories(categoryQuery.data);
+        console.log(categoryQuery)
+    }
+    
+        //using useEffect to make sure that we only call the db if the id changes
+    useEffect(() => {
+        getCategories();
+        setLoading(true);
+    }, [product.id]);  
+
     return (
         
         <div className="border-x border-b rounded border-athensgrey">
@@ -41,7 +59,7 @@ export default function ProductCard( { product }) {
                         <p>.</p>
                         <p>.</p>
                         <p>.</p>
-                        <p></p>
+                        <p>.</p>
                     </div>
                 </div>
             </div>

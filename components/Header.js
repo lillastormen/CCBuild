@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 
 export default function Header() {
@@ -6,12 +7,14 @@ export default function Header() {
         <div className="flex flex-col">
             <div className="font-inter font-bold flex flex-row justify-between items-center w-full px-2 pt-3">
                 <div>
-                    <Image 
-                        src='/images/ccbuild_logo.jpeg'
-                        width={180}
-                        height={100}
-                        alt='CCBuild logo'
-                    />
+                    <Link href="/">
+                        <Image 
+                            src='/images/ccbuild_logo.jpeg'
+                            width={180}
+                            height={100}
+                            alt='CCBuild logo'
+                        />
+                    </Link>
                 </div> 
                 <ul className="flex gap-8 text-xs items-center">
                     <li>
@@ -78,7 +81,7 @@ export default function Header() {
                         <h2>ÖVERSIKT</h2>
                     </li>
                     <li>
-                        <h2 className="underline decoration-solid">PROJEKT</h2>
+                        <h2>PROJEKT</h2>
                     </li>
                     <li>
                         <h2>PRODUKTER</h2>

@@ -36,8 +36,8 @@ export default function HomePage() {
 	}, []);
 	
 	async function getProducts() {
-		const query = await ProductController.getAllFrom(project.id); //hardcoding the id for now
 		setCategories(setupCategories());
+		const query = await ProductController.getAllFrom(project.id); //hardcoding the id for now
 		setLoadingProducts(false);
 		setProducts(query.data);
 		setVisibleProducts(query.data);
@@ -87,7 +87,7 @@ export default function HomePage() {
 
 	function handleSelectCategory(cat){
 		setSearchCategory(cat);
-		searchProducts(cat.id, searchCondVisual, searchCondFunctional);
+		searchProducts(cat ? cat.id : null, searchCondVisual, searchCondFunctional);
 	}
 
 	function handleSelectVisualRating(rating){
@@ -104,7 +104,7 @@ export default function HomePage() {
 	function searchProducts(cat, vis, fun){
 		setVisibleProducts(products.filter((e) =>{
 			return (
-				(e.categoryId == cat || cat == null) &&
+				(cat == null || e.categoryId == cat.id) &&
 				(e.conditionVisual >= vis[0] && e.conditionVisual <= vis[1]) &&
 				(e.conditionFunctional >= fun[0] && e.conditionFunctional <= fun[1])
 			);
@@ -288,29 +288,25 @@ export default function HomePage() {
 				</div>
 				<div className="flex-grow flex flex-col border-l pl-4 pt-4">
 					<div className="flex flex-row gap-3 pb-8 pt-2">
-						<button className="border border-seashell bg-seashell rounded-full font-bold text-xs px-4 py-2">TAG</button>
-						<button className="border border-seashell bg-seashell rounded-full font-bold text-xs px-4 py-2">TAG</button>
-						<button className="border border-seashell bg-seashell rounded-full font-bold text-xs px-4 py-2">TAG</button>
-					</div>
-					<div className="flex flex-row gap-3">
-						<p>HERE!!</p>
 					{
 						searchCategory ? (
-							<span>{searchCategory.name}</span>,
-							<div>{
-								searchCategory.children.map((cat) =>{
-									<span key={cat.id} onClick={() => handleSelectCategory(cat)}>cat.name</span>
-								})
-							}</div>
+							<div>
+								<span onClick={() => handleSelectCategory(null)}>{'<-'}</span>
+								<span className="border border-seashell bg-seashell rounded-full font-bold text-xs px-4 py-2">{searchCategory.name}</span>
+								<div>{
+									searchCategory.children.map((cat) =>(
+										<span key={cat.id} onClick={() => handleSelectCategory(cat)} className="border border-seashell bg-seashell rounded-full font-bold text-xs px-4 py-2">{cat.name}</span>
+									))
+								}</div>
+							</div>
 						) : (
 							<div>{
 								categories.map((cat) =>(
-									<span key={cat.id} onClick={() => handleSelectCategory(cat)}>{cat.name}</span>
+									<span key={cat.id} onClick={() => handleSelectCategory(cat)} className="border border-seashell bg-seashell rounded-full font-bold text-xs px-4 py-2">{cat.name}</span>
 								))
 							}</div>
 						)
 					}
-						<p>TO HERE!!</p>
 					</div>
 					<div className="bg-athensgrey flex items-center w-full h-20">
 						<div className="flex flex-row items-center ml-auto mr-3">

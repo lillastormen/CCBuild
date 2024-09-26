@@ -86,6 +86,27 @@ export const ProductController = {
 		let res = await supabase
 			.from('Product')
 			.select('*');
+
+		if (res.error) return res;
+
+		for (let i = 0; i < res.data.length; i++){
+			res.data[i].properties = (await supabase
+				.from('Product_properties')
+				.select('*')
+				.eq('productId', res.data[i].id)).data;
+
+			let market = (await supabase
+				.from('Product_marketplace')
+				.select('*')
+				.eq('productId', res.data[i].id)).data;
+
+			res.data[i].marketplace = market ? market[0] : null;
+
+			res.data[i].inventory = (await supabase
+				.from('Product_inventory')
+				.select('*')
+				.eq('productId', res.data[i].id)).data[0];
+		}
 		return res;
 	},
 
@@ -94,6 +115,27 @@ export const ProductController = {
 			.from('Product')
 			.select('*')
 			.eq('projectId', projectId);
+
+		if (res.error) return res;
+
+		for (let i = 0; i < res.data.length; i++){
+			res.data[i].properties = (await supabase
+				.from('Product_properties')
+				.select('*')
+				.eq('productId', res.data[i].id)).data;
+
+			let market = (await supabase
+				.from('Product_marketplace')
+				.select('*')
+				.eq('productId', res.data[i].id)).data;
+
+			res.data[i].marketplace = market ? market[0] : null;
+
+			res.data[i].inventory = (await supabase
+				.from('Product_inventory')
+				.select('*')
+				.eq('productId', res.data[i].id)).data[0];
+		}
 		return res;
 	},
 
@@ -102,6 +144,24 @@ export const ProductController = {
 			.from('Product')
 			.select('*')
 			.eq('id', id);
+
+		if (res.error) return res;
+
+		res.data.properties = (await supabase
+			.from('Product_properties')
+			.select('*')
+			.eq('productId', res.data[i].id)).data;
+
+		res.data.marketplace = (await supabase
+			.from('Product_marketplace')
+			.select('*')
+			.eq('productId', res.data[i].id)).data;
+
+		res.data.inventory = (await supabase
+			.from('Product_inventory')
+			.select('*')
+			.eq('productId', res.data[i].id)).data;
+		
 		return res;
 	},
 

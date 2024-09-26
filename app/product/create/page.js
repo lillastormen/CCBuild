@@ -91,8 +91,7 @@ const CreateProductPage = () => {
         <div className="flex-grow flex flex-col pl-4 pt-4">
           <div>
             <h3 className="text-lg text-bostonblue font-bold">Steg {step+1} av 5</h3>
-            <h2 className="font-poppins font-bold text-3xl pt-1">Generell information</h2>
-            <p className="text-sm text-boulder pt-1">* Anger obligatoriskt fällt</p>
+           
           </div>
           
           <div className="border-b">

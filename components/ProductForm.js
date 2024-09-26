@@ -44,6 +44,8 @@ function ProductForm({ step, currentProduct }) {
         {(step == 0) && (
        
         <>
+            <h2 className="font-poppins font-bold text-3xl pt-1">Generell information</h2>
+            <p className="text-sm text-boulder pt-1">* Anger obligatoriskt fällt</p>
             <div>
                 <label>Projekt*</label>
                 <input
@@ -77,7 +79,7 @@ function ProductForm({ step, currentProduct }) {
                 <input
                     type="text"
                     name="picture"
-                    value={product.projectNumber}
+                    value={product.picture}
                     onChange={handleChange}
                 />
             </div>
@@ -103,58 +105,220 @@ function ProductForm({ step, currentProduct }) {
         
         {(step == 1) && (
                 <>
+                <h2 className="font-poppins font-bold text-3xl pt-1">Plats / Status / Antal</h2>
                 <div>
-                    <label>Product Name:</label>
+                    <label>Antal</label>
+                    <input
+                       
+                    />
+                </div>
+                <div>
+                    <label>Estetiskt skick</label>
                     <input
                         type="text"
-                        name="name"
-                        value={product.name}
+                        name="conditionVisual"
+                        value={product.conditionVisual}
                         onChange={handleChange}
                         required
+                    />
+                </div>
+                <div>
+                    <label>Funktionellt skick</label>
+                    <input
+                        type="text"
+                        name="conditionFunctional"
+                        value={product.conditionFunctional}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div>
+                    <label>Komentarer</label>
+                    <input
+                       
+                    />
+                </div>
+                <div>
+                    <label>Ändra</label>
+                    <input
+                       
                     />
                 </div>
 
                 </>
         )}
+
+
+        {(step == 2) && (
+                <>
+
+                <h2 className="font-poppins font-bold text-3xl pt-1">Form</h2>
                 <div>
-                    <label>Project id:</label>
+                    <label>Material</label>
                     <input
-                        type="number"
-                        name="projectId"
-                        value={product.projectId}
+                        type="text"
+                        name="material"
+                        value={product.material}
                         onChange={handleChange}
                     />
                 </div>
-              
                 <div>
-                    <label>Article number:</label>
+                    <label>Färg/Finish</label>
                     <input
-                        type="number"
+                        type="text"
+                        name="color"
+                        value={product.color}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <h3>Vikt</h3>
+                    <p>Enhet - kg</p>
+                    <p>Vikt / st</p>
+                    <input
+                        type="text"
+                        name="weight"
+                     
+                    />
+                </div>
+                <div>
+                    <h3>Mått</h3>
+                    <p>Enhet - {product.measurementsUnit}</p>
+                </div>
+                <div>
+                    <div>
+                        <label>Bredd</label>
+                        <input
+                            type="text"
+                            name="width"
+                            value={product.width}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Längd</label>
+                        <input
+                            type="text"
+                            name="length"
+                            value={product.length}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Höjd</label>
+                        <input
+                            type="text"
+                            name="height"
+                            value={product.height}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Djup</label>
+                        <input
+                            type="text"
+                            name="depth"
+                            value={product.depth}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Diameter</label>
+                        <input
+                            type="text"
+                            name="diameter"
+                            value={product.diameter}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Tjocklek</label>
+                        <input
+                            type="text"
+                            name="thickness"
+                            value={product.thickness}
+                            onChange={handleChange}
+                        />
+                    </div>
+                </div>
+                <h2 className="font-poppins font-bold text-3xl pt-1">Egenskaper</h2>
+                <div>
+                    <div>
+                        <label>Typ</label>
+                        <label>Model</label>
+                        <label>Tjocklek</label>
+                        <label>Hängning</label>
+                        <label>Modulmått</label>
+                        <label>Karmdjup mm</label>
+                        <label>Brandgastäthet Sa/S200</label>
+                        <label>Brandklass</label>
+                        <label>Ljusreduktion dB</label>
+                    </div>
+                </div>
+
+                </>
+        )}
+        {(step == 3) && (
+                <>
+
+                <h2 className="font-poppins font-bold text-3xl pt-1">Produktinformation</h2>
+                <div>
+                    <label>Produktbeskrivning</label>
+                    <input
+                        type="text"
+                        name="description"
+                        value={product.description}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label>Tillverkare</label>
+                    <input
+                        type="text"
+                        name="manufacturer"
+                        value={product.manufacturer}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label>Artikelsnummer</label>
+                    <input
+                        type="text"
                         name="articleNumber"
                         value={product.articleNumber}
                         onChange={handleChange}
                     />
                 </div>
-           
                 <div>
-                    <label>Year of manufacture:</label>
+                    <label>Artikelsnummer</label>
                     <input
-                        type="date"
+                        type="text"
+                        name="articleNumber"
+                        value={product.articleNumber}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label>Tillverkningsår</label>
+                    <input
+                        type="text"
                         name="yearOfManufacture"
                         value={product.yearOfManufacture}
                         onChange={handleChange}
                     />
                 </div>
                 <div>
-                    <label>Year of Purchase:</label>
+                    <label>Inköpsår</label>
                     <input
-                    type="date"
-                    name="yearOfPurchase"
-                    value={product.yearOfPurchase}
-                    onChange={handleChange}
+                        type="text"
+                        name="yearOfPurchase"
+                        value={product.yearOfPurchase}
+                        onChange={handleChange}
                     />
                 </div>
                 <div>
+                    <label>Övrigproduktinformation</label>
+                    <div>
                     <label>GTIN:</label>
                     <input
                     type="number"
@@ -199,52 +363,42 @@ function ProductForm({ step, currentProduct }) {
                     onChange={handleChange}
                     />
                 </div>
+                </div>
+                </>
+        )}
+         {(step == 4) && (
+                <>
+
+                <h2 className="font-poppins font-bold text-3xl pt-1">Hantering för marknadsplats</h2>
+                <h4>Pris</h4>
+                <div>
+                    <label>Nypris / st</label>
+                    <input
+                     
+                    />
+                </div>
+                <div>
+                    <label>Externtpris / st</label>
+                    <input
+                     
+                    />
+                </div>
+                <div>
+                    <label>Interntptis / st</label>
+                    <input
+                     
+                    />
+                </div>
+                <div>Lät köparen föreslå pris</div>
+                <h4>Leverans</h4>   
+                <div>Kan hämtas på plats</div>
+                <div>Kan skicka med frakt</div>
+        
+            </>
+        )}
+                
              
-                <div>
-                    <label>Width (mm):</label>
-                    <input
-                        type="number"
-                        name="width"
-                        value={product.width || ''}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Height (mm):</label>
-                    <input
-                        type="number"
-                        name="height"
-                        value={product.height || ''}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Depth (mm):</label>
-                    <input
-                        type="number"
-                        name="depth"
-                        value={product.depth || ''}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Diameter (mm):</label>
-                    <input
-                        type="number"
-                        name="diameter"
-                        value={product.diameter || ''}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Thickness (mm):</label>
-                    <input
-                        type="number"
-                        name="thickness"
-                        value={product.thickness || ''}
-                        onChange={handleChange}
-                    />
-                </div>
+           
                 <button type="submit">Submit</button>
          
         </form>

@@ -2,8 +2,8 @@
 export const ProductObject = {
         name: '',
         projectId: null,
-        conditionVisual: true,
-        conditionFunctional: true,
+        conditionVisual: null,
+        conditionFunctional: null,
         picture: '',
         projectNumber: null,
         description: '',
@@ -12,6 +12,7 @@ export const ProductObject = {
         measurementsUnit: 'mm',
         width: null,
         height: null,
+        length: null,
         depth: null,
         diameter: null,
         thickness: null,

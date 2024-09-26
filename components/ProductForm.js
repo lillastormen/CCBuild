@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ProductController } from "@/controllers/productController";
-import { ProductObject } from "../objects/ProductObject"
 
 function ProductForm({ step, currentProduct, currentInventory, handleChange }) {
 

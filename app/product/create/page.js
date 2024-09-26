@@ -61,7 +61,6 @@ const CreateProductPage = () => {
         [name]: isNumericField ? (value === '' ? null : parseInt(value, 10)) : 
         isBooleanField ? (value === 'true' ? true : false) : value
     });
-    console.log(product)
 };    
 
   //todo: create a producr component for a single component

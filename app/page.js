@@ -322,8 +322,8 @@ export default function HomePage() {
 							loadingProducts && 
 								<span>Loading...</span>
 							||
-							visibleProducts.map((product) => {
-								return <div><ProductCard product={product} /></div>
+							visibleProducts.map((product, index) => {
+								return <ProductCard product={product} key={"card-"+index} />
 							})
 						}
 					</div>

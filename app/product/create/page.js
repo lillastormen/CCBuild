@@ -9,6 +9,7 @@ import { ProductObject } from "@/objects/ProductObject";
 import { ProductController } from "@/controllers/productController";
 import { ProductInventory } from "@/objects/ProductInventory";
 import { useRouter } from "next/navigation";
+import { Suspense } from 'react'
 
 
 const CreateProductPage = () => {
@@ -122,6 +123,7 @@ const CreateProductPage = () => {
           </div>
           
           <div className="border-b">
+          <Suspense>
             { productId && (
               !loading && (
                 <>
@@ -141,6 +143,7 @@ const CreateProductPage = () => {
                 />
               </>
             )}
+            </Suspense>
           </div>
           <div className="flex flex-row justify-between pt-8">
             <button className="flex flex-row gap-2 items-center font-semibold bg-white border border-bostonblue rounded-full px-4 py-2 text-bostonblue text-sm" onClick={() => setStep(step-1)}>Föregående</button>

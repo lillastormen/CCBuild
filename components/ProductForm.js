@@ -2,22 +2,12 @@ import React, { useState } from "react";
 import { ProductController } from "@/controllers/productController";
 import { ProductObject } from "../objects/ProductObject"
 
-function ProductForm({ step, currentProduct, currentInventory }) {
+function ProductForm({ step, currentProduct, currentInventory, handleChange }) {
 
     const [product, setProduct] = useState(currentProduct);
     const [inventory, setInventory] = useState(currentInventory);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        const isNumericField = ['projectId', 'projectNumber', 'width', 'height', 'depth', 'diameter', 'thickness'].includes(name);
-        const isBooleanField = ['conditionVisual', 'conditionFunctional'].includes(name);
-        
-        setProduct({
-            ...product, 
-            [name]: isNumericField ? (value === '' ? null : parseInt(value, 10)) : 
-            isBooleanField ? (value === 'true' ? true : false) : value
-        });
-    };    
+   
     
     const handleInventoryChange = (e) => {
         const { name, value } = e.target;

@@ -8,10 +8,12 @@ import { ProductObject } from "@/objects/ProductObject";
 
 import { ProductController } from "@/controllers/productController";
 import { ProductInventory } from "@/objects/ProductInventory";
+import { useRouter } from "next/navigation";
 
 
 const CreateProductPage = () => {
 
+  const router = useRouter();
   //using searchParams to get the id from the url
   const params = useSearchParams();
   const productId = params.get('id');
@@ -19,6 +21,7 @@ const CreateProductPage = () => {
   //using setState to store dynamic info from the db and also controlling what we should show, if it's loading or not
   const [product, setProduct] = useState(ProductObject);
   const [loading, setLoading] = useState(true);
+  const [isCreating, setIsCreating] = useState(false);
   
   const [inventory, setInventory] = useState(ProductInventory);
   const [loadingInventory, setLoadingInventory] = useState(true);
@@ -33,12 +36,33 @@ const CreateProductPage = () => {
     console.log(query);
   }
 
+  async function createProduct() {
+    console.log(product)
+    const query = await ProductController.create(product);
+    setIsCreating(false);
+    console.log(query.data);
+    console.log(query.error)
+    // router.push('/product/'+query.data)
+  }
+
   //using useEffect to make sure that we only call the db if the id changes
   useEffect(() => {
     if(productId) getProduct();
     setLoading(true);
   }, [productId]);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const isNumericField = ['projectId', 'projectNumber', 'width', 'height', 'depth', 'diameter', 'thickness'].includes(name);
+    const isBooleanField = ['conditionVisual', 'conditionFunctional'].includes(name);
+    
+    setProduct({
+        ...product, 
+        [name]: isNumericField ? (value === '' ? null : parseInt(value, 10)) : 
+        isBooleanField ? (value === 'true' ? true : false) : value
+    });
+    console.log(product)
+};    
 
   //todo: create a producr component for a single component
   return (
@@ -113,7 +137,8 @@ const CreateProductPage = () => {
                 <ProductForm 
                   step={step}
                   currentProduct={product}
-                  currentInventory={inventory}
+                  currentInventory={inventory} 
+                  handleChange={handleChange}
                 />
               </>
             )}
@@ -121,7 +146,7 @@ const CreateProductPage = () => {
           <div className="flex flex-row justify-between pt-8">
             <button className="flex flex-row gap-2 items-center font-semibold bg-white border border-bostonblue rounded-full px-4 py-2 text-bostonblue text-sm" onClick={() => setStep(step-1)}>Föregående</button>
             <div className="flex flex-row gap-3">
-              <button className="flex flex-row gap-2 items-center font-semibold bg-white border border-bostonblue rounded-full px-4 py-2 text-bostonblue text-sm">Spara</button>
+              <button className="flex flex-row gap-2 items-center font-semibold bg-white border border-bostonblue rounded-full px-4 py-2 text-bostonblue text-sm" onClick={() => createProduct()}>Spara</button>
               <button className="flex flex-row gap-2 items-center font-semibold bg-bostonblue border rounded-full px-4 py-2 text-white text-sm" onClick={() => setStep(step+1)}>Nästa</button>
             </div>
           </div>

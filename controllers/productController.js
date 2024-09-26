@@ -2,6 +2,7 @@ import { supabase } from '../db/dbConnection.js';
 
 export const ProductController = {
     create: async (newProduct) => {
+		console.log(newProduct);
         const { data, error } = await supabase
           .from('Product')  
           .insert([newProduct]);  

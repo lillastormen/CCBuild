@@ -19,9 +19,9 @@ export default function Layout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="font-inter flex flex-col">
+      <body className="font-inter flex flex-col min-h-screen ">
         <Header />
-         {children}
+        <div className="grow">{children}</div>
         <Footer /> 
       </body>
     </html>
